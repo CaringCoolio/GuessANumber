@@ -1,0 +1,45 @@
+from tkinter import *                                                                                                                       
+import tkinter.font as font                                                                                                                 
+import random                                                                                                                               
+num = random.randint(1,50)                                                                                                                  
+i = 0                                                                                                                                       
+def submit():                                                                                                                               
+    global num, i,guessLabel                                                                                                                
+    i+=1                                                                                                                                    
+    try:                                                                                                                                    
+        enterednum= (int(guess.get()))                                                                                                      
+        if (enterednum)==num:                                                                                                               
+            guessLabel.place(x = 0, y = 150)                                                                                                
+            guessLabel.config(text=f'CONGRATS YOU GUESSED THE RIGHT NUMBER IN {i} GUESSES!!')                                               
+        elif (enterednum)  > num:                                                                                                           
+            guessLabel.config(text=f'YOU GUESSED TOO HIGH MAKE A LOWER GUESS')                                                              
+        elif (enterednum) < num:                                                                                                            
+            guessLabel.config(text='YOU GUESSED TO LOW MAKE A HIGHER GUESS')                                                                
+    except ValueError:                                                                                                                      
+        guessLabel.config(text = "did not enter number idiot")                                                                              
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+win = Tk()                                                                                                                                  
+myFont = font.Font(family='Helvetica', size=20, weight='bold')                                                                              
+win.geometry('800x600')                                                                                                                     
+win.title('guessNumber')                                                                                                                    
+win.configure(background='black')                                                                                                           
+guess = Entry(win, bg='white')                                                                                                              
+guess.grid(row=0,                                                                                                                           
+    column=0,                                                                                                                               
+    padx=250,                                                                                                                               
+    pady=250,                                                                                                                               
+    ipady=17,                                                                                                                               
+    ipadx=10)                                                                                                                               
+guess['font'] = myFont                                                                                                                      
+guessLabel = Label(win,bg='black', fg='white',font=myFont)                                                                                  
+guessLabel.place(x=100, y=150)                                                                                                              
+submit = Button(win, text="SUBMIT", height=4, command=submit).place(x=550, y=250)                                                           
+myLabel = Label(win, text='Make a Guess', bg='black', fg='white', font=myFont).place(x=300, y=30)                                           
+                                                                                                                                            
+win.mainloop()                                                                                                                              
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
